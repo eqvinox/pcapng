@@ -17,14 +17,14 @@
 file. This format is extensible; Wireshark can currently read and write
 it, and libpcap can currently read some pcapng files. 
     " name="description">
-<meta content="xml2rfc 3.12.3" name="generator">
+<meta content="xml2rfc 3.12.6" name="generator">
 <meta content="draft-ietf-opsawg-pcapng" name="ietf.draft">
 <!-- Generator version information:
-  xml2rfc 3.12.3
+  xml2rfc 3.12.6
     Python 3.9.7
     appdirs 1.4.4
     ConfigArgParse 1.3
-    google-i18n-address 2.5.0
+    google-i18n-address 2.5.1
     html5lib 1.1
     intervaltree 3.1.0
     Jinja2 2.11.3
@@ -1020,11 +1020,11 @@ svg [stroke="fill"], svg [fill^="#fff"] {
 <thead><tr>
 <td class="left">Internet-Draft</td>
 <td class="center">pcapng</td>
-<td class="right">March 2022</td>
+<td class="right">May 2022</td>
 </tr></thead>
 <tfoot><tr>
 <td class="left">Tuexen, et al.</td>
-<td class="center">Expires 11 September 2022</td>
+<td class="center">Expires 14 November 2022</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1037,12 +1037,12 @@ svg [stroke="fill"], svg [fill^="#fff"] {
 <dd class="internet-draft">draft-ietf-opsawg-pcapng</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2022-03-10" class="published">10 March 2022</time>
+<time datetime="2022-05-13" class="published">13 May 2022</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Informational</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2022-09-11">11 September 2022</time></dd>
+<dd class="expires"><time datetime="2022-11-14">14 November 2022</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1113,7 +1113,7 @@ it, and libpcap can currently read some pcapng files.<a href="#section-abstract-
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 11 September 2022.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 14 November 2022.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -2241,19 +2241,23 @@ indicate the interface to which the block refers (such the
 interface that was used to capture the packet that an Enhanced
 Packet Block contains or to which the statistics in an Interface
 Statistic Block refer).<a href="#section-4.2-2" class="pilcrow">¶</a></p>
-<p id="section-4.2-3">There must be an Interface Description Block for each
-interface to which another block refers. Blocks such as an Enhanced
-Packet Block or an Interface Statistics Block contain an Interface ID
-value referring to a particular interface, and a Simple Packet Block
-implicitly refers to an interface with an Interface ID of 0. If the
-file does not contain any blocks that use an Interface ID, then the
-file does not need to have any IDBs.<a href="#section-4.2-3" class="pilcrow">¶</a></p>
-<p id="section-4.2-4">An Interface Description Block is valid only inside the section
+<p id="section-4.2-3">Within a section, there must be an Interface Description Block for each
+interface to which another block within that section refers.  Blocks
+such as an Enhanced Packet Block or an Interface Statistics Block
+contain an Interface ID value referring to a particular interface, and a
+Simple Packet Block implicitly refers to an interface with an Interface
+ID of 0.  If the file does not contain any blocks that use an Interface
+ID, then the file does not need to have any IDBs.<a href="#section-4.2-3" class="pilcrow">¶</a></p>
+<p id="section-4.2-4">There is no requirement that all Interface Description Blocks occur
+within a section before all blocks of other types, as long as the
+Interface Description Block for an interface occurs before any block
+that refers to that interface.<a href="#section-4.2-4" class="pilcrow">¶</a></p>
+<p id="section-4.2-5">An Interface Description Block is valid only inside the section
 to which it belongs. The structure of an Interface Description Block is
-shown in <a href="#format_idb" class="xref">Figure 10</a>.<a href="#section-4.2-4" class="pilcrow">¶</a></p>
+shown in <a href="#format_idb" class="xref">Figure 10</a>.<a href="#section-4.2-5" class="pilcrow">¶</a></p>
 <span id="name-interface-description-block-"></span><div id="format_idb">
 <figure id="figure-10">
-          <div class="alignCenter art-text artwork" id="section-4.2-5.1">
+          <div class="alignCenter art-text artwork" id="section-4.2-6.1">
 <pre>
                         1                   2                   3
     0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
@@ -2278,32 +2282,32 @@ shown in <a href="#format_idb" class="xref">Figure 10</a>.<a href="#section-4.2-
 <a href="#name-interface-description-block-" class="selfRef">Interface Description Block Format</a>
           </figcaption></figure>
 </div>
-<p id="section-4.2-6">The meaning of the fields is:<a href="#section-4.2-6" class="pilcrow">¶</a></p>
+<p id="section-4.2-7">The meaning of the fields is:<a href="#section-4.2-7" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-4.2-7.1">Block Type: The block type of the Interface Description Block
-is 1.<a href="#section-4.2-7.1" class="pilcrow">¶</a>
+<li class="normal" id="section-4.2-8.1">Block Type: The block type of the Interface Description Block
+is 1.<a href="#section-4.2-8.1" class="pilcrow">¶</a>
 </li>
-          <li class="normal" id="section-4.2-7.2">Block Total Length: total size of this block, as described in <a href="#section_block" class="xref">Section 3.1</a>.<a href="#section-4.2-7.2" class="pilcrow">¶</a>
+          <li class="normal" id="section-4.2-8.2">Block Total Length: total size of this block, as described in <a href="#section_block" class="xref">Section 3.1</a>.<a href="#section-4.2-8.2" class="pilcrow">¶</a>
 </li>
-          <li class="normal" id="section-4.2-7.3">LinkType (16 bits): an unsigned value that defines the
+          <li class="normal" id="section-4.2-8.3">LinkType (16 bits): an unsigned value that defines the
 link layer type of this interface.  The list of Standardized
-Link Layer Type codes is available in <span>[<a href="#LINKTYPES" class="xref">LINKTYPES</a>]</span>.<a href="#section-4.2-7.3" class="pilcrow">¶</a>
+Link Layer Type codes is available in <span>[<a href="#LINKTYPES" class="xref">LINKTYPES</a>]</span>.<a href="#section-4.2-8.3" class="pilcrow">¶</a>
 </li>
-          <li class="normal" id="section-4.2-7.4">Reserved (16 bits): not used - MUST be filled with 0 by
+          <li class="normal" id="section-4.2-8.4">Reserved (16 bits): not used - MUST be filled with 0 by
 pcapng file writers, and MUST be ignored by pcapng file
-readers.<a href="#section-4.2-7.4" class="pilcrow">¶</a>
+readers.<a href="#section-4.2-8.4" class="pilcrow">¶</a>
 </li>
-          <li class="normal" id="section-4.2-7.5">SnapLen (32 bits): an unsigned value indicating the
+          <li class="normal" id="section-4.2-8.5">SnapLen (32 bits): an unsigned value indicating the
 maximum number of octets captured from each packet.  The
 portion of each packet that exceeds this value will not be
-stored in the file. A value of zero indicates no limit.<a href="#section-4.2-7.5" class="pilcrow">¶</a>
+stored in the file. A value of zero indicates no limit.<a href="#section-4.2-8.5" class="pilcrow">¶</a>
 </li>
-          <li class="normal" id="section-4.2-7.6">Options: optionally, a list of options (formatted according to
-the rules defined in <a href="#section_opt" class="xref">Section 3.5</a>) can be present.<a href="#section-4.2-7.6" class="pilcrow">¶</a>
+          <li class="normal" id="section-4.2-8.6">Options: optionally, a list of options (formatted according to
+the rules defined in <a href="#section_opt" class="xref">Section 3.5</a>) can be present.<a href="#section-4.2-8.6" class="pilcrow">¶</a>
 </li>
         </ul>
-<p id="section-4.2-8">In addition to the options defined in <a href="#section_opt" class="xref">Section 3.5</a>,
-the following options are valid within this block:<a href="#section-4.2-8" class="pilcrow">¶</a></p>
+<p id="section-4.2-9">In addition to the options defined in <a href="#section_opt" class="xref">Section 3.5</a>,
+the following options are valid within this block:<a href="#section-4.2-9" class="pilcrow">¶</a></p>
 <span id="name-interface-description-block-o"></span><div id="optionsifb">
 <table class="center" id="table-3">
           <caption>
@@ -2418,32 +2422,32 @@ the following options are valid within this block:<a href="#section-4.2-8" class
           </tbody>
         </table>
 </div>
-<span class="break"></span><dl class="dlNewline" id="section-4.2-10">
-          <dt id="section-4.2-10.1">if_name:</dt>
-          <dd style="margin-left: 4.0em" id="section-4.2-10.2">
-            <p id="section-4.2-10.2.1">The if_name option
+<span class="break"></span><dl class="dlNewline" id="section-4.2-11">
+          <dt id="section-4.2-11.1">if_name:</dt>
+          <dd style="margin-left: 4.0em" id="section-4.2-11.2">
+            <p id="section-4.2-11.2.1">The if_name option
 is a UTF-8 string containing the name of the device used to
-capture data. The string is not zero-terminated.<a href="#section-4.2-10.2.1" class="pilcrow">¶</a></p>
+capture data. The string is not zero-terminated.<a href="#section-4.2-11.2.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
 </dl>
-<p id="section-4.2-11">Examples: "eth0", "\Device\NPF_{AD1CE675-96D0-47C5-ADD0-2504B9126B68}".<a href="#section-4.2-11" class="pilcrow">¶</a></p>
-<span class="break"></span><dl class="dlNewline" id="section-4.2-12">
-          <dt id="section-4.2-12.1">if_description:</dt>
-          <dd style="margin-left: 4.0em" id="section-4.2-12.2">
-            <p id="section-4.2-12.2.1">The
+<p id="section-4.2-12">Examples: "eth0", "\Device\NPF_{AD1CE675-96D0-47C5-ADD0-2504B9126B68}".<a href="#section-4.2-12" class="pilcrow">¶</a></p>
+<span class="break"></span><dl class="dlNewline" id="section-4.2-13">
+          <dt id="section-4.2-13.1">if_description:</dt>
+          <dd style="margin-left: 4.0em" id="section-4.2-13.2">
+            <p id="section-4.2-13.2.1">The
 if_description option is a UTF-8 string containing the description
 of the device used to capture data. The string is not
-zero-terminated.<a href="#section-4.2-12.2.1" class="pilcrow">¶</a></p>
+zero-terminated.<a href="#section-4.2-13.2.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
 </dl>
-<p id="section-4.2-13">Examples: "Wi-Fi", "Local Area Connection", "Wireless
-Network Connection", "First Ethernet Interface".<a href="#section-4.2-13" class="pilcrow">¶</a></p>
-<span class="break"></span><dl class="dlNewline" id="section-4.2-14">
-          <dt id="section-4.2-14.1">if_IPv4addr:</dt>
-          <dd style="margin-left: 4.0em" id="section-4.2-14.2">
-            <p id="section-4.2-14.2.1">The if_IPv4addr
+<p id="section-4.2-14">Examples: "Wi-Fi", "Local Area Connection", "Wireless
+Network Connection", "First Ethernet Interface".<a href="#section-4.2-14" class="pilcrow">¶</a></p>
+<span class="break"></span><dl class="dlNewline" id="section-4.2-15">
+          <dt id="section-4.2-15.1">if_IPv4addr:</dt>
+          <dd style="margin-left: 4.0em" id="section-4.2-15.2">
+            <p id="section-4.2-15.2.1">The if_IPv4addr
 option is an IPv4 network address and corresponding netmask for
 the interface. The first four octets are the IP address, and
 the next four octets are the netmask. This option can be repeated
@@ -2452,61 +2456,61 @@ multiple IPv4 addresses are assigned to the interface. Note that
 the IP address and netmask are both treated as four octets, one
 for each octet of the address or mask; they are not 32-bit
 numbers, and thus the endianness of the SHB does not affect
-this field's value.<a href="#section-4.2-14.2.1" class="pilcrow">¶</a></p>
+this field's value.<a href="#section-4.2-15.2.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
 </dl>
-<p id="section-4.2-15">Examples: '192 168 1 1 255 255 255 0'.<a href="#section-4.2-15" class="pilcrow">¶</a></p>
-<span class="break"></span><dl class="dlNewline" id="section-4.2-16">
-          <dt id="section-4.2-16.1">if_IPv6addr:</dt>
-          <dd style="margin-left: 4.0em" id="section-4.2-16.2">
-            <p id="section-4.2-16.2.1">The
+<p id="section-4.2-16">Examples: '192 168 1 1 255 255 255 0'.<a href="#section-4.2-16" class="pilcrow">¶</a></p>
+<span class="break"></span><dl class="dlNewline" id="section-4.2-17">
+          <dt id="section-4.2-17.1">if_IPv6addr:</dt>
+          <dd style="margin-left: 4.0em" id="section-4.2-17.2">
+            <p id="section-4.2-17.2.1">The
 if_IPv6addr option is an IPv6 network address and corresponding
 prefix length for the interface. The first 16 octets are the
 IP address and the next octet is the prefix length. This option
 can be repeated multiple times within the same Interface
 Description Block when multiple IPv6 addresses are assigned to
-the interface.<a href="#section-4.2-16.2.1" class="pilcrow">¶</a></p>
+the interface.<a href="#section-4.2-17.2.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
 </dl>
-<p id="section-4.2-17">Example: 2001:0db8:85a3:08d3:1319:8a2e:0370:7344/64 is written
+<p id="section-4.2-18">Example: 2001:0db8:85a3:08d3:1319:8a2e:0370:7344/64 is written
 (in hex) as '20 01 0d b8 85 a3 08 d3 13 19 8a 2e 03 70 73 44
-40'.<a href="#section-4.2-17" class="pilcrow">¶</a></p>
-<span class="break"></span><dl class="dlNewline" id="section-4.2-18">
-          <dt id="section-4.2-18.1">if_MACaddr:</dt>
-          <dd style="margin-left: 4.0em" id="section-4.2-18.2">
-            <p id="section-4.2-18.2.1">The if_MACaddr
+40'.<a href="#section-4.2-18" class="pilcrow">¶</a></p>
+<span class="break"></span><dl class="dlNewline" id="section-4.2-19">
+          <dt id="section-4.2-19.1">if_MACaddr:</dt>
+          <dd style="margin-left: 4.0em" id="section-4.2-19.2">
+            <p id="section-4.2-19.2.1">The if_MACaddr
 option is the Interface Hardware MAC address (48 bits), if
-available.<a href="#section-4.2-18.2.1" class="pilcrow">¶</a></p>
+available.<a href="#section-4.2-19.2.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
 </dl>
-<p id="section-4.2-19">Example: '00 01 02 03 04 05'.<a href="#section-4.2-19" class="pilcrow">¶</a></p>
-<span class="break"></span><dl class="dlNewline" id="section-4.2-20">
-          <dt id="section-4.2-20.1">if_EUIaddr:</dt>
-          <dd style="margin-left: 4.0em" id="section-4.2-20.2">
-            <p id="section-4.2-20.2.1">The if_EUIaddr
+<p id="section-4.2-20">Example: '00 01 02 03 04 05'.<a href="#section-4.2-20" class="pilcrow">¶</a></p>
+<span class="break"></span><dl class="dlNewline" id="section-4.2-21">
+          <dt id="section-4.2-21.1">if_EUIaddr:</dt>
+          <dd style="margin-left: 4.0em" id="section-4.2-21.2">
+            <p id="section-4.2-21.2.1">The if_EUIaddr
 option is the Interface Hardware EUI address (64 bits), if
-available.<a href="#section-4.2-20.2.1" class="pilcrow">¶</a></p>
+available.<a href="#section-4.2-21.2.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
 </dl>
-<p id="section-4.2-21">Example: '02 34 56 FF FE 78 9A BC'.<a href="#section-4.2-21" class="pilcrow">¶</a></p>
-<span class="break"></span><dl class="dlNewline" id="section-4.2-22">
-          <dt id="section-4.2-22.1">if_speed:</dt>
-          <dd style="margin-left: 4.0em" id="section-4.2-22.2">
-            <p id="section-4.2-22.2.1">The if_speed
+<p id="section-4.2-22">Example: '02 34 56 FF FE 78 9A BC'.<a href="#section-4.2-22" class="pilcrow">¶</a></p>
+<span class="break"></span><dl class="dlNewline" id="section-4.2-23">
+          <dt id="section-4.2-23.1">if_speed:</dt>
+          <dd style="margin-left: 4.0em" id="section-4.2-23.2">
+            <p id="section-4.2-23.2.1">The if_speed
 option is a 64-bit unsigned value indicating the interface
-speed, in bits per second.<a href="#section-4.2-22.2.1" class="pilcrow">¶</a></p>
+speed, in bits per second.<a href="#section-4.2-23.2.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
 </dl>
-<p id="section-4.2-23">Example: the 64-bit decimal number 100000000 for 100Mbps.<a href="#section-4.2-23" class="pilcrow">¶</a></p>
-<span class="break"></span><dl class="dlNewline" id="section-4.2-24">
-          <dt id="section-4.2-24.1">if_tsresol:</dt>
-          <dd style="margin-left: 4.0em" id="section-4.2-24.2">
-            <p id="section-4.2-24.2.1">The if_tsresol
+<p id="section-4.2-24">Example: the 64-bit decimal number 100000000 for 100Mbps.<a href="#section-4.2-24" class="pilcrow">¶</a></p>
+<span class="break"></span><dl class="dlNewline" id="section-4.2-25">
+          <dt id="section-4.2-25.1">if_tsresol:</dt>
+          <dd style="margin-left: 4.0em" id="section-4.2-25.2">
+            <p id="section-4.2-25.2.1">The if_tsresol
 option identifies the resolution of timestamps. If the Most
 Significant Bit is equal to zero, the remaining bits indicates the
 resolution of the timestamp as a negative power of 10 (e.g. 6
@@ -2516,67 +2520,67 @@ Significant Bit is equal to one, the remaining bits indicates
 the resolution as negative power of 2 (e.g. 10 means 1/1024
 of second). If this option is not present, a resolution of
 10^-6 is assumed (i.e. timestamps have the same resolution of
-the standard 'libpcap' timestamps).<a href="#section-4.2-24.2.1" class="pilcrow">¶</a></p>
+the standard 'libpcap' timestamps).<a href="#section-4.2-25.2.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
 </dl>
-<p id="section-4.2-25">Example: '6'.<a href="#section-4.2-25" class="pilcrow">¶</a></p>
-<span class="break"></span><dl class="dlNewline" id="section-4.2-26">
-          <dt id="section-4.2-26.1">if_tzone:</dt>
-          <dd style="margin-left: 4.0em" id="section-4.2-26.2">
-            <p id="section-4.2-26.2.1">The if_tzone
+<p id="section-4.2-26">Example: '6'.<a href="#section-4.2-26" class="pilcrow">¶</a></p>
+<span class="break"></span><dl class="dlNewline" id="section-4.2-27">
+          <dt id="section-4.2-27.1">if_tzone:</dt>
+          <dd style="margin-left: 4.0em" id="section-4.2-27.2">
+            <p id="section-4.2-27.2.1">The if_tzone
 option identifies the time zone for GMT support (TODO: specify
-better).<a href="#section-4.2-26.2.1" class="pilcrow">¶</a></p>
+better).<a href="#section-4.2-27.2.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
 </dl>
-<p id="section-4.2-27">Example: TODO: give a good example.<a href="#section-4.2-27" class="pilcrow">¶</a></p>
-<span class="break"></span><dl class="dlNewline" id="section-4.2-28">
-          <dt id="section-4.2-28.1">if_filter:</dt>
-          <dd style="margin-left: 4.0em" id="section-4.2-28.2">
-            <p id="section-4.2-28.2.1">The if_filter
+<p id="section-4.2-28">Example: TODO: give a good example.<a href="#section-4.2-28" class="pilcrow">¶</a></p>
+<span class="break"></span><dl class="dlNewline" id="section-4.2-29">
+          <dt id="section-4.2-29.1">if_filter:</dt>
+          <dd style="margin-left: 4.0em" id="section-4.2-29.2">
+            <p id="section-4.2-29.2.1">The if_filter
 option identifies the filter (e.g. "capture only TCP traffic")
 used to capture traffic. The first octet of the Option Data keeps a
 code of the filter used (e.g. if this is a libpcap string, or BPF
 bytecode, and more). More details about this format will be
 presented in Appendix XXX (TODO). (TODO: better use different
 options for different fields? e.g. if_filter_pcap, if_filter_bpf,
-...)<a href="#section-4.2-28.2.1" class="pilcrow">¶</a></p>
+...)<a href="#section-4.2-29.2.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
 </dl>
-<p id="section-4.2-29">Example: '00'"tcp port 23 and host 192.0.2.5".<a href="#section-4.2-29" class="pilcrow">¶</a></p>
-<span class="break"></span><dl class="dlNewline" id="section-4.2-30">
-          <dt id="section-4.2-30.1">if_os:</dt>
-          <dd style="margin-left: 4.0em" id="section-4.2-30.2">
-            <p id="section-4.2-30.2.1">The if_os option is
+<p id="section-4.2-30">Example: '00'"tcp port 23 and host 192.0.2.5".<a href="#section-4.2-30" class="pilcrow">¶</a></p>
+<span class="break"></span><dl class="dlNewline" id="section-4.2-31">
+          <dt id="section-4.2-31.1">if_os:</dt>
+          <dd style="margin-left: 4.0em" id="section-4.2-31.2">
+            <p id="section-4.2-31.2.1">The if_os option is
 a UTF-8 string containing the name of the operating system of the
 machine in which this interface is installed. This can be
 different from the same information that can be contained by the
 Section Header Block (<a href="#section_shb" class="xref">Section 4.1</a>) because the
 capture can have been done on a remote machine. The string is
-not zero-terminated.<a href="#section-4.2-30.2.1" class="pilcrow">¶</a></p>
+not zero-terminated.<a href="#section-4.2-31.2.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
 </dl>
-<p id="section-4.2-31">Examples: "Windows XP SP2", "openSUSE 10.2".<a href="#section-4.2-31" class="pilcrow">¶</a></p>
-<span class="break"></span><dl class="dlNewline" id="section-4.2-32">
-          <dt id="section-4.2-32.1">if_fcslen:</dt>
-          <dd style="margin-left: 4.0em" id="section-4.2-32.2">
-            <p id="section-4.2-32.2.1">The if_fcslen
+<p id="section-4.2-32">Examples: "Windows XP SP2", "openSUSE 10.2".<a href="#section-4.2-32" class="pilcrow">¶</a></p>
+<span class="break"></span><dl class="dlNewline" id="section-4.2-33">
+          <dt id="section-4.2-33.1">if_fcslen:</dt>
+          <dd style="margin-left: 4.0em" id="section-4.2-33.2">
+            <p id="section-4.2-33.2.1">The if_fcslen
 option is an 8-bit unsigned integer value that specifies the
 length of the Frame Check Sequence (in bits) for this interface.
 For link layers whose FCS length can change during time, the
 Enhanced Packet Block epb_flags Option can be used in each
-Enhanced Packet Block (see <a href="#section_epb_flags" class="xref">Section 4.3.1</a>).<a href="#section-4.2-32.2.1" class="pilcrow">¶</a></p>
+Enhanced Packet Block (see <a href="#section_epb_flags" class="xref">Section 4.3.1</a>).<a href="#section-4.2-33.2.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
 </dl>
-<p id="section-4.2-33">Example: '4'.<a href="#section-4.2-33" class="pilcrow">¶</a></p>
-<span class="break"></span><dl class="dlNewline" id="section-4.2-34">
-          <dt id="section-4.2-34.1">if_tsoffset:</dt>
-          <dd style="margin-left: 4.0em" id="section-4.2-34.2">
-            <p id="section-4.2-34.2.1">The
+<p id="section-4.2-34">Example: '4'.<a href="#section-4.2-34" class="pilcrow">¶</a></p>
+<span class="break"></span><dl class="dlNewline" id="section-4.2-35">
+          <dt id="section-4.2-35.1">if_tsoffset:</dt>
+          <dd style="margin-left: 4.0em" id="section-4.2-35.2">
+            <p id="section-4.2-35.2.1">The
 if_tsoffset option is a 64-bit signed integer value that
 specifies an offset (in seconds) that must be added to the
 timestamp of each packet to obtain the absolute timestamp of
@@ -2585,53 +2589,53 @@ in the packet MUST be considered absolute timestamps.  The
 time zone of the offset can be specified with the option
 if_tzone. TODO: won't a if_tsoffset_low for fractional
 second offsets be useful for highly synchronized capture
-systems?<a href="#section-4.2-34.2.1" class="pilcrow">¶</a></p>
+systems?<a href="#section-4.2-35.2.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
 </dl>
-<p id="section-4.2-35">Example: '1234'.<a href="#section-4.2-35" class="pilcrow">¶</a></p>
-<span class="break"></span><dl class="dlNewline" id="section-4.2-36">
-          <dt id="section-4.2-36.1">if_hardware:</dt>
-          <dd style="margin-left: 4.0em" id="section-4.2-36.2">
-            <p id="section-4.2-36.2.1">The
+<p id="section-4.2-36">Example: '1234'.<a href="#section-4.2-36" class="pilcrow">¶</a></p>
+<span class="break"></span><dl class="dlNewline" id="section-4.2-37">
+          <dt id="section-4.2-37.1">if_hardware:</dt>
+          <dd style="margin-left: 4.0em" id="section-4.2-37.2">
+            <p id="section-4.2-37.2.1">The
 if_hardware option is a UTF-8 string containing the description
-of the interface hardware. The string is not zero-terminated.<a href="#section-4.2-36.2.1" class="pilcrow">¶</a></p>
+of the interface hardware. The string is not zero-terminated.<a href="#section-4.2-37.2.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
 </dl>
-<p id="section-4.2-37">Examples: "Broadcom NetXtreme", "Intel(R) PRO/1000 MT
+<p id="section-4.2-38">Examples: "Broadcom NetXtreme", "Intel(R) PRO/1000 MT
 Network Connection", "NETGEAR WNA1000Mv2 N150 Wireless USB
-Micro Adapter".<a href="#section-4.2-37" class="pilcrow">¶</a></p>
-<span class="break"></span><dl class="dlNewline" id="section-4.2-38">
-          <dt id="section-4.2-38.1">if_txspeed:</dt>
-          <dd style="margin-left: 4.0em" id="section-4.2-38.2">
-            <p id="section-4.2-38.2.1">The
+Micro Adapter".<a href="#section-4.2-38" class="pilcrow">¶</a></p>
+<span class="break"></span><dl class="dlNewline" id="section-4.2-39">
+          <dt id="section-4.2-39.1">if_txspeed:</dt>
+          <dd style="margin-left: 4.0em" id="section-4.2-39.2">
+            <p id="section-4.2-39.2.1">The
 if_txrxspeeds option is a 64-bit unsigned value
 indicating the interface transmit speed in bits per
-second.<a href="#section-4.2-38.2.1" class="pilcrow">¶</a></p>
+second.<a href="#section-4.2-39.2.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
 </dl>
-<p id="section-4.2-39">Example: the 64-bit decimal number 1024000 for
-1024Kbps.<a href="#section-4.2-39" class="pilcrow">¶</a></p>
-<span class="break"></span><dl class="dlNewline" id="section-4.2-40">
-          <dt id="section-4.2-40.1">if_rxspeed:</dt>
-          <dd style="margin-left: 4.0em" id="section-4.2-40.2">
-            <p id="section-4.2-40.2.1">The
+<p id="section-4.2-40">Example: the 64-bit decimal number 1024000 for
+1024Kbps.<a href="#section-4.2-40" class="pilcrow">¶</a></p>
+<span class="break"></span><dl class="dlNewline" id="section-4.2-41">
+          <dt id="section-4.2-41.1">if_rxspeed:</dt>
+          <dd style="margin-left: 4.0em" id="section-4.2-41.2">
+            <p id="section-4.2-41.2.1">The
 if_rxspeed option is a 64-bit unsigned value
 indicating the interface receive speed, in bits per
-second.<a href="#section-4.2-40.2.1" class="pilcrow">¶</a></p>
+second.<a href="#section-4.2-41.2.1" class="pilcrow">¶</a></p>
 </dd>
         <dd class="break"></dd>
 </dl>
-<p id="section-4.2-41">Example: the 64-bit decimal number 8192000 for
-8192Kbps.<a href="#section-4.2-41" class="pilcrow">¶</a></p>
-<p id="section-4.2-42">If the interface transmit speed and receive speed are the
+<p id="section-4.2-42">Example: the 64-bit decimal number 8192000 for
+8192Kbps.<a href="#section-4.2-42" class="pilcrow">¶</a></p>
+<p id="section-4.2-43">If the interface transmit speed and receive speed are the
 same, the if_speed option MUST be used and the if_txspeed and
 if_rxspeed options MUST NOT be used.  If the transmit speed is
 unknown, the if_speed and if_txspeed options MUST NOT be used;
 if the receive speed is unknown, the if_speed and if_rxspeed
-options MUST NOT be used.<a href="#section-4.2-42" class="pilcrow">¶</a></p>
+options MUST NOT be used.<a href="#section-4.2-43" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="section_epb">
