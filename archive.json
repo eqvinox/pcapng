@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2022-03-13T01:12:27.055848+00:00",
+  "timestamp": "2022-05-15T01:58:52.442100+00:00",
   "repo": "pcapng/pcapng",
   "labels": [
     {
@@ -1955,6 +1955,37 @@
           "body": "Thank you. In the future, you can turn this into a pull request...",
           "createdAt": "2022-03-10T20:53:42Z",
           "updatedAt": "2022-03-10T20:53:42Z"
+        }
+      ]
+    },
+    {
+      "number": 116,
+      "id": "I_kwDOAU54e85JnYTE",
+      "title": "IDB: Can it appear anywhere within a section?",
+      "url": "https://github.com/pcapng/pcapng/issues/116",
+      "state": "CLOSED",
+      "author": "daviessm",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "From reading the spec I can't see whether all IDBs must appear immediately after the SHB or whether they can occur anywhere within a section. Can this be made explicit?",
+      "createdAt": "2022-05-13T10:37:16Z",
+      "updatedAt": "2022-05-13T11:15:50Z",
+      "closedAt": "2022-05-13T11:15:50Z",
+      "comments": [
+        {
+          "author": "guyharris",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "[Section 3.4 \"Physical File Layout\"](https://pcapng.github.io/pcapng/draft-ietf-opsawg-pcapng.html#name-physical-file-layout) in [Figure 6](https://pcapng.github.io/pcapng/draft-ietf-opsawg-pcapng.html#fssample-full) gives as an example a file with an IDB that does *not* appear immediately after the SHB or after another IDB.\r\n\r\nI will add text to [section 4.2 \"Interface Description Block\"](https://pcapng.github.io/pcapng/draft-ietf-opsawg-pcapng.html#name-interface-description-block) text to explicitly indicate that the only restriction, within a section, on the location of IDBs is that an IDB for an interface must occur before any blocks that refer to that interface.",
+          "createdAt": "2022-05-13T10:50:00Z",
+          "updatedAt": "2022-05-13T10:50:34Z"
+        },
+        {
+          "author": "guyharris",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "> I will add text to [section 4.2 \"Interface Description Block\"](https://pcapng.github.io/pcapng/draft-ietf-opsawg-pcapng.html#name-interface-description-block) text to explicitly indicate that the only restriction, within a section, on the location of IDBs is that an IDB for an interface must occur before any blocks that refer to that interface.\r\n\r\nDone in 96a3afd74773307ca1892e87954891bd177ecd3f.",
+          "createdAt": "2022-05-13T11:15:50Z",
+          "updatedAt": "2022-05-13T11:15:50Z"
         }
       ]
     }
