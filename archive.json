@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2022-05-15T01:58:52.442100+00:00",
+  "timestamp": "2022-06-12T02:01:00.949694+00:00",
   "repo": "pcapng/pcapng",
   "labels": [
     {
@@ -1986,6 +1986,37 @@
           "body": "> I will add text to [section 4.2 \"Interface Description Block\"](https://pcapng.github.io/pcapng/draft-ietf-opsawg-pcapng.html#name-interface-description-block) text to explicitly indicate that the only restriction, within a section, on the location of IDBs is that an IDB for an interface must occur before any blocks that refer to that interface.\r\n\r\nDone in 96a3afd74773307ca1892e87954891bd177ecd3f.",
           "createdAt": "2022-05-13T11:15:50Z",
           "updatedAt": "2022-05-13T11:15:50Z"
+        }
+      ]
+    },
+    {
+      "number": 117,
+      "id": "I_kwDOAU54e85LbrPY",
+      "title": "Clarification: Purpose of if_tsresol to support powers or 2",
+      "url": "https://github.com/pcapng/pcapng/issues/117",
+      "state": "CLOSED",
+      "author": "unmanned-player",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "The interface description block has an option (`if_tsresol`) that lets you set timestamp resolution. That value seems to be quite involved. In that, it can also support timestamps as powers of 2.\r\n\r\nAre there any operating systems, devices or clocks that can produce timestamps in powers of 2? I reckon, RFC document could benefit from clear rationale for rare resolutions like these.",
+      "createdAt": "2022-06-09T03:32:53Z",
+      "updatedAt": "2022-06-10T04:27:49Z",
+      "closedAt": "2022-06-10T04:27:49Z",
+      "comments": [
+        {
+          "author": "guyharris",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "[The earliest pcapng draft I can find](https://web.archive.org/web/20050430075233/http://www.tcpdump.org/pcap/pcap.html) - dated April 2004, although it's from an April 2005 Wayback Machine archive - has both power-of-10 and power-of-2 time stamp support, but gives no rationale.\r\n\r\nIt may have been a \"just in case, so that, if we ever need it, we don't have to introduce a feature that older code doesn't support and ''couldn't'' support as it didn't exist before we introduced it\" idea.  I can see if any of the original developers of pcapng know what the rationale was.\r\n\r\n> Are there any operating systems, devices or clocks that can produce timestamps in powers of 2?\r\n\r\nEndace's DAG API, for their DAG cards, appears to provide a 64-bit time stamp in units of 2^-32 seconds.",
+          "createdAt": "2022-06-09T06:16:45Z",
+          "updatedAt": "2022-06-09T06:16:45Z"
+        },
+        {
+          "author": "unmanned-player",
+          "authorAssociation": "NONE",
+          "body": "Thanks for the quick response.",
+          "createdAt": "2022-06-10T04:27:49Z",
+          "updatedAt": "2022-06-10T04:27:49Z"
         }
       ]
     }
